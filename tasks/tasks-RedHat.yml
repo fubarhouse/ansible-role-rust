@@ -1,2 +1,9 @@
 ---
 
+- name: "Rust | Install dependencies"
+  yum:
+    name: "{{ item }}"
+    state: installed
+  with_items:
+    - curl
+    - gcc

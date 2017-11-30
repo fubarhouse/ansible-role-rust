@@ -5,4 +5,5 @@
     name: "{{ item }}"
     state: installed
   with_items:
+    - curl
     - gcc

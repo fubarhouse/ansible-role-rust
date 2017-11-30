@@ -1,6 +1,34 @@
 ---
 # setup tasks file for fubarhouse-rust
 
+- name: "Rust | Define user variable for ssh use"
+  set_fact:
+    fubarhouse_user: "{{ ansible_ssh_user }}"
+  when: ansible_ssh_user is defined and fubarhouse_user is not defined
+
+- name: "Rust | Define user variable for non-ssh use"
+  set_fact:
+    fubarhouse_user: "{{ ansible_user_id }}"
+  when: ansible_ssh_user is not defined and fubarhouse_user is not defined
+
+- name: "Rust | Get $HOME"
+  shell: "echo $HOME"
+  register: shell_home_dir
+  changed_when: false
+  when: fubarhouse_user_dir is not defined
+
+- name: "Rust | Set $HOME"
+  set_fact:
+    fubarhouse_user_dir: "{{ shell_home_dir.stdout }}"
+  when: fubarhouse_user_dir is not defined
+
+- name: "Rust | Define shell exports"
+  set_fact:
+    shell_exports:
+      - regex: 'export PATH="{{ fubarhouse_user_dir }}/.cargo/bin"'
+        lineinfile: 'export PATH="{{ fubarhouse_user_dir }}/.cargo/bin"'
+  when: shell_exports is not defined
+
 - name: "Rust | Formulate source string comparrison requirements"
   set_fact:
     rust_version_requirement: "rustc {{ rust_version }}"
@@ -26,3 +54,14 @@
   register: rust_preinstall_version_s
   changed_when: false
   when: build_rust_from_source|bool == true
+
+- name: "Rust | Detect configured shell profiles"
+  stat:
+    path: "{{ fubarhouse_user_dir }}/{{ item }}"
+  changed_when: false
+  failed_when: false
+  with_items: "{{ shell_profiles }}"
+  register: stat_shell_profiles
+  when:
+  - shell_profiles is defined
+  - stat_shell_profiles is not defined

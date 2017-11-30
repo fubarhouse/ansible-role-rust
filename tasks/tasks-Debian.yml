@@ -1,1 +1,9 @@
 ---
+
+- name: "Rust | Install dependencies"
+  apt:
+    name: "{{ item }}"
+    state: installed
+  with_items:
+    - curl
+    - gcc

@@ -12,37 +12,37 @@ env:
     distro: ubuntu1204
     init: /sbin/init
     run_opts: --privileged
-    playbook: test.yml
+    playbook: playbook.yml
   - docker_user: fubarhouse
     distro: ubuntu1210
     init: /sbin/init
     run_opts: --privileged
-    playbook: test.yml
+    playbook: playbook.yml
   - docker_user: fubarhouse
     distro: ubuntu1304
     init: /sbin/init
     run_opts: --privileged
-    playbook: test.yml
+    playbook: playbook.yml
   - docker_user: fubarhouse
     distro: ubuntu1310
     init: /sbin/init
     run_opts: --privileged
-    playbook: test.yml
+    playbook: playbook.yml
   - docker_user: geerlingguy
     distro: ubuntu1404
     init: /sbin/init
     run_opts: --privileged
-    playbook: test.yml
+    playbook: playbook.yml
   - docker_user: fubarhouse
     distro: ubuntu1410
     init: /sbin/init
     run_opts: --privileged
-    playbook: test.yml
+    playbook: playbook.yml
   - docker_user: fubarhouse
     distro: ubuntu1504
     init: /sbin/init
     run_opts: --privileged
-    playbook: test.yml
+    playbook: playbook.yml
   - docker_user: fubarhouse
     distro: ubuntu1510
     init: /sbin/init
@@ -52,47 +52,47 @@ env:
     distro: ubuntu1604
     init: /sbin/init
     run_opts: --privileged
-    playbook: test.yml
+    playbook: playbook.yml
   - docker_user: fubarhouse
     distro: ubuntu1610
     init: /sbin/init
     run_opts: --privileged
-    playbook: test.yml
+    playbook: playbook.yml
   - docker_user: fubarhouse
     distro: ubuntu1704
     init: /sbin/init
     run_opts: --privileged
-    playbook: test.yml
+    playbook: playbook.yml
   - docker_user: fubarhouse
     distro: ubuntu1710
     init: /sbin/init
     run_opts: --privileged
-    playbook: test.yml
+    playbook: playbook.yml
   - docker_user: geerlingguy
     distro: centos6
     init: /sbin/init
     run_opts: --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro
-    playbook: test.yml
+    playbook: playbook.yml
   - docker_user: geerlingguy
     distro: centos7
     init: /usr/lib/systemd/systemd
     run_opts: --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro
-    playbook: test.yml
+    playbook: playbook.yml
   - docker_user: fubarhouse
     distro: debian7
     init: /bin/systemd
     run_opts: --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro
-    playbook: test.yml
+    playbook: playbook.yml
   - docker_user: geerlingguy
     distro: debian8
     init: /lib/systemd/systemd
     run_opts: --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro
-    playbook: test.yml
+    playbook: playbook.yml
   - docker_user: fubarhouse
     distro: debian9
     init: /bin/systemd
     run_opts: --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro
-    playbook: test.yml
+    playbook: playbook.yml
   - docker_user: fubarhouse
     distro: fedora24
     init: /usr/lib/systemd/systemd
@@ -102,12 +102,12 @@ env:
     distro: fedora25
     init: /usr/lib/systemd/systemd
     run_opts: --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro
-    playbook: test.yml
+    playbook: playbook.yml
   - docker_user: fubarhouse
     distro: fedora26
     init: /usr/lib/systemd/systemd
     run_opts: --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro
-    playbook: test.yml
+    playbook: playbook.yml
 
 before_install:
 

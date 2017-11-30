@@ -1,0 +1,14 @@
+---
+
+- name: "Go-Lang | Install dependencies"
+  yum:
+    name: "{{ item }}"
+    state: installed
+  with_items:
+    - curl
+    - gcc
+    - git
+    - findutils
+    - make
+    - rsync
+    - tar

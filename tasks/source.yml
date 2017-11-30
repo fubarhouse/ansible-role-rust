@@ -1,0 +1,36 @@
+---
+
+- name: "Rust | Register installed version"
+  shell: rustc --version
+  register: preinstalled_rust_version
+  changed_whem: false
+  failed_when: false
+
+- name: "Rust | Define verification string"
+  set_fact:
+    new_rust_version: "rustc {{ rust_version }}"
+
+- name: "Rust | Clone"
+  git:
+    repo: "https://github.com/rust-lang/rust.git"
+    dest: "/tmp/rust"
+    version: "{{ rust_version }}"
+    clone: yes
+  when: 'new_rust_version not in preinstalled_rust_version.stdout'
+
+- name: "Rust | Build"
+  shell: "cd /tmp/rust && ./x.py build"
+  changed_when: false
+  when: 'new_rust_version not in preinstalled_rust_version.stdout'
+
+- name: "Rust | Install"
+  shell: "cd /tmp/rust && ./x.py install cargo"
+  changed_when: false
+  when: 'new_rust_version not in preinstalled_rust_version.stdout'
+
+- name: "Rust | Verify"
+  shell: rustc --version
+  register: installed_rust_version
+  changed_when: false
+  failed_when: 'new_rust_version not in installed_rust_version.stdout'
+  when: 'new_rust_version not in preinstalled_rust_version.stdout'

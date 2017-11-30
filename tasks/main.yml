@@ -1,0 +1,17 @@
+---
+# main tasks file for fubarhouse-rust
+
+- name: "Include tasks to clean installation"
+  include_tasks: cleanup.yml
+  when: rust_install_clean|bool == true
+
+- name: "Install from installer"
+  include_tasks: installer.yml
+  when: build_rust_from_source|bool == false
+
+- name: "Install from source"
+  include_tasks: source.yml
+  when: build_rust_from_source|bool == true
+
+- name: "Include tasks for Cargo"
+  include_tasks: cargo.yml

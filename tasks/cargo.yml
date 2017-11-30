@@ -1,0 +1,6 @@
+---
+
+- name: "Rust | Install Cargo"
+  shell: "cargo install {{ item }}"
+  with_items: cargo
+  changed_when: false

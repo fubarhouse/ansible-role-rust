@@ -1,0 +1,41 @@
+galaxy_info:
+  author: Karl Hepworth
+  description: UNDER DEVELOPMENT! Installs the Rust programming language, and any associated Cargo.
+  license: MIT
+  min_ansible_version: 2.4
+  platforms:
+  - name: MacOSX
+    versions:
+    - all
+  - name: Ubuntu
+    versions:
+    - artful
+    - zesty
+    - yakkety
+    - xenial
+    - vivid
+    - wily
+    - utopic
+    - trusty
+    - saucy
+    - raring
+    - quantal
+    - precise
+  - name: EL
+    versions:
+    - 6
+    - 7
+  - name: Debian
+    versions:
+    - wheezy
+    - jessie
+    - stretch
+  galaxy_tags:
+  - rust
+  - development
+  - programming
+  - language
+  - compiler
+  - package
+  - manager
+dependencies: []

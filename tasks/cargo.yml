@@ -1,7 +1,7 @@
 ---
 
 - name: "Rust | Install Cargo"
-  shell: "cargo install {{ item }} | cat"
+  shell: "{{ fubarhouse_user_dir }}/.cargo/bin/cargo install {{ item }} | cat"
   with_items: "{{ cargo_items }}"
   register: cargo_result
   changed_when: false

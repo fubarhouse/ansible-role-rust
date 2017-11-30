@@ -10,11 +10,16 @@
 
 - name: "Install from installer"
   include_tasks: installer.yml
-  when: build_rust_from_source|bool == false
+  when:
+    - ((build_rust_from_source|bool == false) and
+      (rust_version_requirement not in rust_preinstall_version_r.stdout)) or
+      (rust_update|bool == true)
 
 - name: "Install from source"
   include_tasks: source.yml
-  when: build_rust_from_source|bool == true
+  when:
+    - build_rust_from_source|bool == true
+    - rust_version_requirement not in rust_preinstall_version_s.stdout
 
 - name: "Include verification tasks"
   include_tasks: verify.yml

@@ -4,6 +4,7 @@
 # Rust
 
 rust_version: 1.20.0
+rust_update: true
 build_rust_from_source: false
 
 # Cargo

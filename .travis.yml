@@ -47,7 +47,7 @@ env:
     distro: ubuntu1510
     init: /sbin/init
     run_opts: --privileged
-    playbook: test.yml
+    playbook: playbook.yml
   - docker_user: geerlingguy
     distro: ubuntu1604
     init: /sbin/init
@@ -97,7 +97,7 @@ env:
     distro: fedora24
     init: /usr/lib/systemd/systemd
     run_opts: --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro
-    playbook: test.yml
+    playbook: playbook.yml
   - docker_user: fubarhouse
     distro: fedora25
     init: /usr/lib/systemd/systemd

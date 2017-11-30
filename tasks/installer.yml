@@ -2,4 +2,4 @@
 
 - name: "Rust | Install"
   shell: "curl https://sh.rustup.rs -sSf | sh -s -- -y"
-#  changed_when: false
+  changed_when: false

@@ -1,0 +1,16 @@
+---
+# verification tasks file for fubarhouse-rust
+
+- name: "Rust | Verify source install"
+  shell: rustc --version
+  register: rust_new_version
+  failed_when: rust_version_requirement not in rust_new_version.stdout
+  changed_when: false
+  when: build_rust_from_source|bool == true
+
+- name: "Rust | Verify recommended install"
+  shell: rustc
+  register: rust_new_version
+  changed_when: false
+  failed_when: rust_version_requirement not in rust_new_version.stdout
+  when: build_rust_from_source|bool == false

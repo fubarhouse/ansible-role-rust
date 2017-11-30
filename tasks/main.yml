@@ -1,6 +1,9 @@
 ---
 # main tasks file for fubarhouse-rust
 
+- name: "Include setup tasks"
+  include_tasks: setup.yml
+
 - name: "Include tasks to clean installation"
   include_tasks: cleanup.yml
   when: rust_install_clean|bool == true
@@ -12,6 +15,9 @@
 - name: "Install from source"
   include_tasks: source.yml
   when: build_rust_from_source|bool == true
+
+- name: "Include verification tasks"
+  include_tasks: verify.yml
 
 - name: "Include tasks for Cargo"
   include_tasks: cargo.yml

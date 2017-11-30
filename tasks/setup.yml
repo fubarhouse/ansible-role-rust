@@ -1,0 +1,21 @@
+---
+# setup tasks file for fubarhouse-rust
+
+- name: "Rust | Formulate source string comparrison requirements"
+  set_fact:
+    rust_version_requirement: "rustc {{ rust_version }}"
+  when:
+    - build_rust_from_source|bool == true
+    - rust_version_requirement is not defined
+
+- name: "Rust | Formulate installer string comparrison requirements"
+  set_fact:
+    rust_version_requirement: "Usage: rustc"
+  when:
+    - build_rust_from_source|bool == false
+    - rust_version_requirement is not defined
+
+- name: "Rust | Looking for installation"
+  shell: rustc --version | cat
+  register: rust_preinstall_version
+  changed_when: false

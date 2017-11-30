@@ -8,7 +8,7 @@ build_rust_from_source: false
 
 # Cargo
 
-cargo:
+cargo_items:
   - ripgrep
 
 # Configuration

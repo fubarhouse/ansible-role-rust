@@ -1,6 +1,15 @@
 ---
 
 - name: "Rust | Install Cargo"
-  shell: "cargo install {{ item }}"
-  with_items: cargo
+  shell: "cargo install {{ item }} | cat"
+  with_items: "{{ cargo_items }}"
+  register: cargo_result
   changed_when: false
+
+- name: "Rust | Verify Cargo"
+  shell: "cargo"
+  with_items: "{{ cargo_result.results }}"
+  changed_when: false
+  failed_when:
+    - ("Add --force to overwrite" not in item.stderr) and
+      ("Finished" not in item.stdout)

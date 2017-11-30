@@ -44,13 +44,13 @@
     - rust_version_requirement is not defined
 
 - name: "Rust | Looking for installer installation"
-  shell: rustc | cat
+  shell: "{{ fubarhouse_user_dir }}/.cargo/bin/rustc | cat"
   register: rust_preinstall_version_r
   changed_when: false
   when: build_rust_from_source|bool == false
 
 - name: "Rust | Looking for source installation"
-  shell: rustc --version | cat
+  shell: "{{ fubarhouse_user_dir }}/.cargo/bin/rustc --version | cat"
   register: rust_preinstall_version_s
   changed_when: false
   when: build_rust_from_source|bool == true

@@ -16,7 +16,7 @@
   changed_when: false
 
 - name: "Rust | Verify"
-  shell: rustc --version
+  shell: "{{ fubarhouse_user_dir }}/.cargo/bin/rustc --version"
   register: installed_rust_version
   changed_when: false
   failed_when: 'new_rust_version not in installed_rust_version.stdout'

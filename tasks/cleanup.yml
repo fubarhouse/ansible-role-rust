@@ -14,8 +14,8 @@
   - shell_exports is defined
   - item[0].stat.exists|bool == true
 
-#- name: "Go-Lang | Removing GOROOT"
-#  file:
-#    path: "{{ GOROOT }}"
-#    state: absent
-#  failed_when: false
+- name: "Rust | Remove $HOME/.cargo"
+  file:
+    path: "{{ fubarhouse_user_dir }}/.cargo"
+    state: absent
+  failed_when: false

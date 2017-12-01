@@ -1,6 +1,6 @@
 galaxy_info:
   author: Karl Hepworth
-  description: UNDER DEVELOPMENT! Installs the Rust programming language, and any associated Cargo.
+  description: Installs Rust and Cargo!
   license: MIT
   min_ansible_version: 2.4
   platforms:
@@ -20,7 +20,7 @@ galaxy_info:
     - saucy
     - raring
     - quantal
-    - precise
+#    - precise
   - name: EL
     versions:
     - 6
@@ -37,5 +37,4 @@ galaxy_info:
   - language
   - compiler
   - package
-  - manager
 dependencies: []

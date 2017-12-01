@@ -1,7 +1,7 @@
 ---
 
 - name: "Rust | Install dependencies"
-  yum:
+  dnf:
     name: "{{ item }}"
     state: installed
   with_items:

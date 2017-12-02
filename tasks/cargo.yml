@@ -7,7 +7,7 @@
   changed_when: false
 
 - name: "Rust | Verify Cargo"
-  shell: "cargo"
+  shell: "{{ fubarhouse_user_dir }}/.cargo/bin/cargo"
   with_items: "{{ cargo_result.results }}"
   changed_when: false
   failed_when:

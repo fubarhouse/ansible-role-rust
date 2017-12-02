@@ -3,7 +3,7 @@
 # Ansible Role: Rust
 
 [![Build Status](https://travis-ci.org/fubarhouse/ansible-role-rust.svg?branch=master)](https://travis-ci.org/fubarhouse/ansible-role-rust)
-[![Ansible Rust](https://img.shields.io/badge/galaxy-fubarhouse--rust-5140.svg)](https://galaxy.ansible.com/fubarhouse/rust)
+[![Ansible Rust](https://img.shields.io/badge/galaxy-fubarhouse--rust-22497.svg)](https://galaxy.ansible.com/fubarhouse/rust)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/fubarhouse/ansible-role-rust/master/LICENSE)
 
 * Install Rust from source (when configured)

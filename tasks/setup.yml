@@ -39,7 +39,7 @@
 - name: "Rust | Define shell exports"
   set_fact:
     shell_exports:
-      - regex: 'export PATH="$PATH:{{ fubarhouse_user_dir }}/.cargo/bin"'
+      - regex: 'export PATH="\$PATH:{{ fubarhouse_user_dir }}/.cargo/bin"'
         lineinfile: 'export PATH="$PATH:{{ fubarhouse_user_dir }}/.cargo/bin"'
   when: shell_exports is not defined
 

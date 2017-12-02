@@ -19,7 +19,6 @@
 ## Role Variables
 
 The version of rust is dependent on a source installation.
-It will nor otherwise be used, source installs are not tied to any given version.
 ````
 rust_version: 1.20.0
 ````

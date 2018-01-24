@@ -4,32 +4,37 @@ galaxy_info:
   license: MIT
   min_ansible_version: 2.4
   platforms:
-  - name: MacOSX
-    versions:
-    - all
-  - name: Ubuntu
-    versions:
-    - artful
-    - zesty
-    - yakkety
-    - xenial
-    - vivid
-    - wily
-    - utopic
-    - trusty
-    - saucy
-    - raring
-    - quantal
-#    - precise
-  - name: EL
-    versions:
-    - 6
-    - 7
-  - name: Debian
-    versions:
-    - wheezy
-    - jessie
-    - stretch
+    - name: Debian
+      versions:
+        - wheezy
+        - jessie
+        - stretch
+        - buster
+    - name: EL
+      versions:
+        - 6
+        - 7
+    - name: Fedora
+      versions:
+        - 24
+        - 25
+        - 26
+        - 27
+    - name: Ubuntu
+      versions:
+#        - precise
+        - quantal
+        - raring
+        - saucy
+        - trusty
+        - utopic
+        - wily
+        - vivid
+        - xenial
+        - yakkety
+        - zesty
+        - artful
+        - bionic
   galaxy_tags:
   - rust
   - development

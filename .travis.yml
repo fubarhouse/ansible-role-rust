@@ -8,6 +8,10 @@ services: docker
 env:
 
   # Source installation tests.
+  #
+  # Precise support depends on
+  # a newer Ansible version than
+  # Geerlingguy's image provides.
 #  - docker_user: geerlingguy
 #    distro: ubuntu1204
 #    init: /sbin/init

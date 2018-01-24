@@ -122,6 +122,11 @@ env:
     init: /usr/lib/systemd/systemd
     run_opts: --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro
     playbook: playbook.yml
+  - docker_user: fubarhouse
+    distro: fedora27
+    init: /usr/lib/systemd/systemd
+    run_opts: --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro
+    playbook: playbook.yml
 
 before_install:
 

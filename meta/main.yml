@@ -22,7 +22,7 @@ galaxy_info:
         - 27
     - name: Ubuntu
       versions:
-#        - precise
+        - precise
         - quantal
         - raring
         - saucy
@@ -31,7 +31,7 @@ galaxy_info:
         - wily
         - vivid
         - xenial
-        - yakkety
+#        - yakkety
         - zesty
         - artful
         - bionic

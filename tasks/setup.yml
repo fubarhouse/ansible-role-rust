@@ -2,15 +2,15 @@
 # setup tasks file for fubarhouse-rust
 
 - name: "Rust | Include OS-Specific tasks (CentOS)"
-  include: tasks-CentOS.yml
+  include_tasks: tasks-CentOS.yml
   when: ansible_distribution == "CentOS"
 
 - name: "Rust | Include OS-Specific tasks (Debian)"
-  include: tasks-Debian.yml
+  include_tasks: tasks-Debian.yml
   when: ansible_os_family == "Debian"
 
 - name: "Rust | Include OS-Specific tasks (RedHat)"
-  include: tasks-RedHat.yml
+  include_tasks: tasks-RedHat.yml
   when:
     - ansible_os_family == "RedHat"
     - ansible_distribution != "CentOS"

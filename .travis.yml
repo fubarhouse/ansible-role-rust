@@ -44,10 +44,10 @@ env:
     init: /sbin/init
     run_opts: --privileged
     playbook: playbook.yml
-#  - distro: yakkety
-#    init: /sbin/init
-#    run_opts: --privileged
-#    playbook: playbook.yml
+  - distro: yakkety
+    init: /sbin/init
+    run_opts: --privileged
+    playbook: playbook.yml
   - distro: zesty
     init: /sbin/init
     run_opts: --privileged
@@ -100,6 +100,10 @@ env:
     init: /usr/lib/systemd/systemd
     run_opts: --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro
     playbook: playbook.yml
+  - distro: fedora-28
+    init: /usr/lib/systemd/systemd
+    run_opts: --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro
+    playbook: playbook.yml
 
 before_install:
 
@@ -117,7 +121,7 @@ script:
   - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/role_under_test/tests/${playbook} --syntax-check'
 
   # Test role.
-  - 'travis_wait 30 docker exec "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/role_under_test/tests/${playbook} --sudo'
+  - 'travis_wait 60 docker exec "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/role_under_test/tests/${playbook} --sudo'
 
   - idempotence=$(mktemp)
   - >

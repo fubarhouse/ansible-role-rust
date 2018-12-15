@@ -104,6 +104,10 @@ env:
     init: /usr/lib/systemd/systemd
     run_opts: --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro
     playbook: playbook.yml
+  - distro: fedora-29
+    init: /usr/lib/systemd/systemd
+    run_opts: --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro
+    playbook: playbook.yml
 
 before_install:
 

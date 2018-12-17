@@ -21,7 +21,7 @@
 
 The version of rust is dependent on a source installation.
 ````
-rust_version: 1.20.0
+rust_version: 1.31.0
 ````
 
 By default, the role will not install from source.

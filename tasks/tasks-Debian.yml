@@ -7,8 +7,7 @@
 
 - name: "Rust | Install dependencies"
   apt:
-    name: "{{ item }}"
-    state: installed
-  with_items:
-    - curl
-    - gcc
+    name:
+      - curl
+      - gcc
+    state: present

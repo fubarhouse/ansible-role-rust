@@ -6,4 +6,3 @@
       - curl
       - gcc
     state: present
-  with_items:

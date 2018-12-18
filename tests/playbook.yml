@@ -1,8 +1,6 @@
 ---
 
 - hosts: all
-  sudo: true
-
   pre_tasks:
 
     - name: Update yum cache.

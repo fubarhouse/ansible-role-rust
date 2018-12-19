@@ -2,8 +2,7 @@
 
 - name: "Rust | Install dependencies"
   dnf:
-    name: "{{ item }}"
-    state: installed
-  with_items:
-    - curl
-    - gcc
+    name:
+      - curl
+      - gcc
+    state: present

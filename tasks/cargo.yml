@@ -1,10 +1,11 @@
 ---
 
 - name: "Rust | Install Cargo"
-  shell: "{{ fubarhouse_user_dir }}/.cargo/bin/cargo install {{ item }} | cat"
+  shell: "{{ fubarhouse_user_dir }}/.cargo/bin/cargo install {{ item.name }} | cat"
   with_items: "{{ cargo_items }}"
   register: cargo_result
   changed_when: false
+  when: item.name is defined
 
 - name: "Rust | Verify Cargo"
   shell: "{{ fubarhouse_user_dir }}/.cargo/bin/cargo"
@@ -13,3 +14,9 @@
   failed_when:
     - ("Add --force to overwrite" not in item.stderr) and
       ("Finished" not in item.stderr)
+
+- name: "Rust | Verify Binary installation"
+  stat:
+    path: "{{ fubarhouse_user_dir }}/.cargo/bin/{{ item.binary }}"
+  with_items: "{{ cargo_items }}"
+  when: item.binary is defined

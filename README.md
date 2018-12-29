@@ -45,10 +45,12 @@ shell_profiles:
 - .bash_profile
 ````
 
-And, to install any cargo you can use the `cargo_items` array:
+And, to install any cargo you can use the `cargo_items` array.
+The `binary` property is optional, and when specified the binary installation will be verified.
 ````
 cargo_items:
-  - ripgrep
+  - name: ripgrep
+    binary: rg
 ````
 
 ## Installation

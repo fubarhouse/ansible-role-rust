@@ -11,7 +11,8 @@ rust_install_clean: false
 # Cargo
 
 cargo_items:
-  - ripgrep
+  - name: ripgrep
+    binary: rg
 
 # Configuration
 

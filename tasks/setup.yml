@@ -17,20 +17,20 @@
   include_tasks: tasks-CentOS.yml
   when:
     - ansible_distribution == "CentOS"
-    - ('"curl" not in rust_which_curl.stdout' && '"gcc" not in rust_which_gcc.stdout')
+    - ('"curl" not in rust_which_curl.stdout' and '"gcc" not in rust_which_gcc.stdout')
 
 - name: "Rust | Include OS-Specific tasks (Debian)"
   include_tasks: tasks-Debian.yml
   when:
     - ansible_os_family == "Debian"
-    - ('"curl" not in rust_which_curl.stdout' && '"gcc" not in rust_which_gcc.stdout')
+    - ('"curl" not in rust_which_curl.stdout' and '"gcc" not in rust_which_gcc.stdout')
 
 - name: "Rust | Include OS-Specific tasks (RedHat)"
   include_tasks: tasks-RedHat.yml
   when:
     - ansible_os_family == "RedHat"
     - ansible_distribution != "CentOS"
-    - ('"curl" not in rust_which_curl.stdout' && '"gcc" not in rust_which_gcc.stdout')
+    - ('"curl" not in rust_which_curl.stdout' and '"gcc" not in rust_which_gcc.stdout')
 
 - name: "Rust | Define user variable for ssh use"
   set_fact:

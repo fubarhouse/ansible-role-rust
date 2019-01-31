@@ -1,19 +1,36 @@
 ---
 # setup tasks file for fubarhouse-rust
 
+- name: "Rust | Look for cURL"
+  shell: which curl
+  register: rust_which_curl
+  changed_when: false
+  failed_when: false
+
+- name: "Rust | Look for gcc"
+  shell: which gcc
+  register: rust_which_gcc
+  changed_when: false
+  failed_when: false
+
 - name: "Rust | Include OS-Specific tasks (CentOS)"
   include_tasks: tasks-CentOS.yml
-  when: ansible_distribution == "CentOS"
+  when:
+    - ansible_distribution == "CentOS"
+    - '"curl" not in rust_which_curl.stdout or "gcc" not in rust_which_gcc.stdout'
 
 - name: "Rust | Include OS-Specific tasks (Debian)"
   include_tasks: tasks-Debian.yml
-  when: ansible_os_family == "Debian"
+  when:
+    - ansible_os_family == "Debian"
+    - '"curl" not in rust_which_curl.stdout or "gcc" not in rust_which_gcc.stdout'
 
 - name: "Rust | Include OS-Specific tasks (RedHat)"
   include_tasks: tasks-RedHat.yml
   when:
     - ansible_os_family == "RedHat"
     - ansible_distribution != "CentOS"
+    - '"curl" not in rust_which_curl.stdout or "gcc" not in rust_which_gcc.stdout'
 
 - name: "Rust | Define user variable for ssh use"
   set_fact:

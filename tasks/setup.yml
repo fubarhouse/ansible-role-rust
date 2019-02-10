@@ -1,6 +1,11 @@
 ---
 # setup tasks file for fubarhouse-rust
 
+- name: "Rust | Debug user"
+  become: True
+  become_user: "{{ fubarhouse_user }}"
+  shell: whoami
+
 - name: "Rust | Look for cURL"
   shell: which curl
   register: rust_which_curl

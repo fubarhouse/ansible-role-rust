@@ -1,42 +1,45 @@
 ---
 # main tasks file for fubarhouse-rust
+- block:
+    - name: "Include setup tasks"
+      include_tasks: setup.yml
 
-- name: "Include setup tasks"
-  include_tasks: setup.yml
+    - name: "Include tasks to clean installation"
+      include_tasks: cleanup.yml
+      when: rust_install_clean|bool == true
 
-- name: "Include tasks to clean installation"
-  include_tasks: cleanup.yml
-  when: rust_install_clean|bool == true
+    - name: "Install from installer"
+      include_tasks: installer.yml
+      when:
+        - ((build_rust_from_source|bool == false) and
+          (rust_version_requirement not in rust_preinstall_version_r.stdout)) or
+          (rust_update|bool == true)
 
-- name: "Install from installer"
-  include_tasks: installer.yml
-  when:
-    - ((build_rust_from_source|bool == false) and
-      (rust_version_requirement not in rust_preinstall_version_r.stdout)) or
-      (rust_update|bool == true)
+    - name: "Install from source"
+      include_tasks: source.yml
+      when:
+        - build_rust_from_source|bool == true
+        - rust_version_requirement not in rust_preinstall_version_s.stdout
 
-- name: "Install from source"
-  include_tasks: source.yml
-  when:
-    - build_rust_from_source|bool == true
-    - rust_version_requirement not in rust_preinstall_version_s.stdout
+    - name: "Ensure shell profiles are present"
+      lineinfile:
+        dest: "{{ item[0].stat.path }}"
+        regexp: "{{ item[1].regex }}"
+        line: "{{ item[1].lineinfile }}"
+        state: present
+      with_nested:
+      - "{{ stat_shell_profiles.results }}"
+      - "{{ shell_exports }}"
+      when:
+      - shell_profiles is defined
+      - shell_exports is defined
+      - item[0].stat.exists|bool == true
 
-- name: "Ensure shell profiles are present"
-  lineinfile:
-    dest: "{{ item[0].stat.path }}"
-    regexp: "{{ item[1].regex }}"
-    line: "{{ item[1].lineinfile }}"
-    state: present
-  with_nested:
-  - "{{ stat_shell_profiles.results }}"
-  - "{{ shell_exports }}"
-  when:
-  - shell_profiles is defined
-  - shell_exports is defined
-  - item[0].stat.exists|bool == true
+    - name: "Include verification tasks"
+      include_tasks: verify.yml
 
-- name: "Include verification tasks"
-  include_tasks: verify.yml
+    - name: "Include tasks for Cargo"
+      include_tasks: cargo.yml
 
-- name: "Include tasks for Cargo"
-  include_tasks: cargo.yml
+  become: True
+  become_user: "{{ fubarhouse_user }}"

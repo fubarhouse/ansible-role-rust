@@ -1,8 +1,9 @@
 ---
 # main tasks file for fubarhouse-rust
+- name: "Include setup tasks"
+  include_tasks: setup.yml
+
 - block:
-    - name: "Include setup tasks"
-      include_tasks: setup.yml
 
     - name: "Include tasks to clean installation"
       include_tasks: cleanup.yml

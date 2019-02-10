@@ -34,15 +34,23 @@
 
 - name: "Rust | Define user variable for ssh use"
   set_fact:
-    fubarhouse_user: "{{ ansible_ssh_user }}"
-  when: ansible_ssh_user is defined and fubarhouse_user is not defined
+    fubarhouse_user: "{{ ansible_user }}"
+  when: ansible_user is defined and fubarhouse_user is not defined and ansible_env.USER == ansible_user
+
+- name: "Rust | Define user variable when becoming a different user"
+  set_fact:
+    fubarhouse_user: "{{ ansible_env.USER }}"
+  when: ansible_user is defined and fubarhouse_user is not defined and ansible_env.USER != ansible_user
+
 
 - name: "Rust | Define user variable for non-ssh use"
   set_fact:
     fubarhouse_user: "{{ ansible_user_id }}"
-  when: ansible_ssh_user is not defined and fubarhouse_user is not defined
+  when: ansible_user is not defined and fubarhouse_user is not defined
 
 - name: "Rust | Get $HOME"
+  become: True
+  become_user: "{{ fubarhouse_user }}"
   shell: "echo $HOME"
   register: shell_home_dir
   changed_when: false

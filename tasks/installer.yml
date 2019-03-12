@@ -3,3 +3,9 @@
 - name: "Rust | Install"
   shell: "curl https://sh.rustup.rs -sSf | sh -s -- -y"
   changed_when: false
+
+- name: "Rust | Install toolchain"
+  shell: "{{ fubarhouse_user_dir }}/.cargo/bin/rustup toolchain install {{ rust_version }}"
+  register: rustup_toolchain
+  changed_when: '"installed" in rustup_toolchain.stdout'
+  when: rust_version is defined

@@ -20,4 +20,9 @@
       failed_when: false
 
   roles:
-    - role_under_test
+    - role: role_under_test
+      vars:
+        rust_version: 1.37.0
+        cargo_items:
+          - bat
+          - lsd

@@ -12,7 +12,7 @@
   with_items: "{{ cargo_result.results }}"
   changed_when: false
   failed_when:
-    - ("Add --force to overwrite" not in item.stderr) and
+    - ("use --force to overwrite" not in item.stderr) and
       ("Finished" not in item.stderr)
 
 - name: "Rust | Verify Binary installation"

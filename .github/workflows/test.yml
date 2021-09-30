@@ -29,6 +29,6 @@ jobs:
         run: ansible-role-tester test --name github_action_test-${{ matrix.distro }} --playbook ./tests/test.yml | grep 'failed=0'
       - name: Cleanup
         run: ansible-role-tester destroy --name github_action_test-${{ matrix.distro }}
-        if: always
+        if: always()
       - name: Sleep for 10 seconds
         run: sleep 10
